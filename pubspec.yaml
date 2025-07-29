@@ -1,0 +1,171 @@
+name: app_2_note_detection_real_time_final
+description: "A professional real-time guitar tuner with advanced pitch detection algorithms."
+# The following line prevents the package from being accidentally published to
+# pub.dev using `flutter pub publish`. This is preferred for private packages.
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+# The following defines the version and build number for your application.
+# A version number is three numbers separated by dots, like 1.2.43
+# followed by an optional build number separated by a +.
+# Both the version and the builder number may be overridden in flutter
+# build by specifying --build-name and --build-number, respectively.
+# In Android, build-name is used as versionName while build-number used as versionCode.
+# Read more about Android versioning at https://developer.android.com/studio/publish/versioning
+# In iOS, build-name is used as CFBundleShortVersionString while build-number is used as CFBundleVersion.
+# Read more about iOS versioning at
+# https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
+# In Windows, build-name is used as the major, minor, and patch parts
+# of the product and file versions while build-number is used as the build suffix.
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.8.1
+
+# Dependencies specify other packages that your package needs in order to work.
+# To automatically upgrade your package dependencies to the latest versions
+# consider running `flutter pub upgrade --major-versions`. Alternatively,
+# dependencies can be manually updated by changing the version numbers below to
+# the latest version available on pub.dev. To see which dependencies have newer
+# versions available, run `flutter pub outdated`.
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # The following adds the Cupertino Icons font to your application.
+  # Use with the CupertinoIcons class for iOS style icons.
+  cupertino_icons: ^1.0.8
+
+  # === CORE AUDIO PROCESSING ===
+  # Real-time audio recording and streaming
+  flutter_sound: ^9.2.13              # Professional audio recording/playback
+  audio_session: ^0.1.16              # Audio session management for iOS/Android
+
+  # Permissions handling
+  permission_handler: ^11.0.1         # Microphone and other permissions
+
+  # === PITCH DETECTION & SIGNAL PROCESSING ===
+  # Scientific computing for advanced algorithms
+  scidart: ^0.0.2-dev.12             # FFT, mathematical operations (compatible version)
+
+  # Alternative signal processing options (uncomment if needed):
+  # smart_arrays: ^3.0.0             # Lightweight arrays with FFT support
+  # ml_linalg: ^13.0.0               # Machine learning linear algebra
+  # complex: ^2.0.0                  # Complex number operations
+
+  # === USER EXPERIENCE ENHANCEMENTS ===
+  # Enhanced feedback and interaction
+  # flutter_vibrate: ^1.3.0          # Removed due to Android Gradle compatibility issues
+  # vibration: ^1.8.4                # Alternative package (if needed)
+  wakelock_plus: ^1.2.1              # Keep screen awake during tuning sessions (updated version)
+
+  # === DATA PERSISTENCE & SETTINGS ===
+  # Local storage for user preferences
+  shared_preferences: ^2.2.2         # Settings storage (reference pitch, tolerance, etc.)
+  path_provider: ^2.1.1              # File system access for advanced features
+
+  # === OPTIONAL STATE MANAGEMENT ===
+  # Uncomment if you want to implement advanced state management:
+  # provider: ^6.0.5                 # Simple, popular state management
+  # riverpod: ^2.4.6                 # Advanced state management with better performance
+  # bloc: ^8.1.2                     # BLoC pattern for complex state logic
+
+  # === OPTIONAL UI ENHANCEMENTS ===
+  # Uncomment for additional UI features:
+  # flutter_animate: ^4.2.0          # Advanced animations
+  # lottie: ^2.7.0                   # Lottie animations for splash screens
+  # google_fonts: ^6.1.0             # Custom fonts for better typography
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  # The "flutter_lints" package below contains a set of recommended lints to
+  # encourage good coding practices. The lint set provided by the package is
+  # activated in the `analysis_options.yaml` file located at the root of your
+  # package. See that file for information about deactivating specific lint
+  # rules and activating additional ones.
+  flutter_lints: ^5.0.0
+
+# For information on the generic Dart part of this file, see the
+# following page: https://dart.dev/tools/pub/pubspec
+
+# The following section is specific to Flutter packages.
+flutter:
+
+  # The following line ensures that the Material Icons font is
+  # included with your application, so that you can use the icons in
+  # the material Icons class.
+  uses-material-design: true
+
+  # Assets for the guitar tuner app
+  # Uncomment and add assets as needed:
+  # assets:
+  #   - assets/images/           # App icons, splash screens
+  #   - assets/sounds/           # Reference tones, click sounds
+  #   - assets/fonts/            # Custom fonts
+  #   - assets/tuning_presets/   # Additional tuning configurations
+
+  # Custom fonts for professional appearance
+  # Uncomment to add custom fonts:
+  # fonts:
+  #   - family: RobotoMono       # Monospace for frequency display
+  #     fonts:
+  #       - asset: assets/fonts/RobotoMono-Regular.ttf
+  #       - asset: assets/fonts/RobotoMono-Bold.ttf
+  #         weight: 700
+  #   - family: Orbitron         # Futuristic font for tuner display
+  #     fonts:
+  #       - asset: assets/fonts/Orbitron-Regular.ttf
+  #       - asset: assets/fonts/Orbitron-Bold.ttf
+  #         weight: 700
+
+# Platform-specific configurations
+# Uncomment if you encounter dependency conflicts:
+# dependency_overrides:
+#   # Override specific package versions if needed
+#   meta: ^1.9.1
+#   collection: ^1.17.0
+
+# === IMPORTANT PLATFORM SETUP NOTES ===
+#
+# ANDROID (android/app/src/main/AndroidManifest.xml):
+# Add these permissions inside <manifest>:
+#   <uses-permission android:name="android.permission.RECORD_AUDIO" />
+#   <uses-permission android:name="android.permission.WAKE_LOCK" />
+#   <uses-permission android:name="android.permission.VIBRATE" />
+#
+# IOS (ios/Runner/Info.plist):
+# Add this inside <dict>:
+#   <key>NSMicrophoneUsageDescription</key>
+#   <string>This app needs microphone access to detect guitar pitch for accurate tuning.</string>
+#
+# === GRADLE CONFIGURATION ===
+# If you get build errors, update android/app/build.gradle:
+#   android {
+#     compileSdkVersion 34
+#     ...
+#     defaultConfig {
+#       minSdkVersion 21  // Required for flutter_sound
+#       targetSdkVersion 34
+#     }
+#   }
+
+# App metadata for professional guitar tuner
+# repository: https://github.com/yourname/app_2_note_detection_real_time_final
+# issue_tracker: https://github.com/yourname/app_2_note_detection_real_time_final/issues
+# documentation: https://github.com/yourname/app_2_note_detection_real_time_final/wiki
+
+# === DEVELOPMENT NOTES ===
+# Core dependencies for real-time guitar tuner:
+# 1. flutter_sound: Professional audio recording with streaming
+# 2. scidart: Advanced mathematical operations for YIN algorithm
+# 3. permission_handler: Essential for microphone access
+# 4. flutter_vibrate: Enhanced haptic feedback for tuning
+# 5. wakelock: Keeps screen on during tuning sessions
+# 6. shared_preferences: Saves user settings (reference pitch, tolerance)
+#
+# Optional but recommended:
+# - audio_session: Better audio session management
+# - path_provider: File system access for future features
+# - Custom fonts: Professional appearance
+# - State management: For complex app states
